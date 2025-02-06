@@ -66,7 +66,6 @@
         </dependency>
     </dependencies>
 
-    <!-- Merge the two build sections -->
     <build>
         <plugins>
             <!-- Spring Boot Maven Plugin -->
@@ -80,6 +79,20 @@
                 <groupId>org.sonarsource.scanner.maven</groupId>
                 <artifactId>sonar-maven-plugin</artifactId>
                 <version>3.9.1.2184</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>sonar</goal>
+                        </goals>
+                        <configuration>
+                            <!-- Source and Test file configurations -->
+                            <sonar.sources>src/main/java</sonar.sources>
+                            <sonar.tests>src/test/java</sonar.tests>
+                            <sonar.test.inclusions>src/test/java/**/*.java</sonar.test.inclusions>
+                            <sonar.exclusions>src/test/java/**/*.java</sonar.exclusions>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
